@@ -1,4 +1,3 @@
-cat > components/WhoAmI.tsx << 'EOF'
 import Image from 'next/image'
 
 export default function WhoAmI() {
@@ -77,4 +76,3 @@ export default function WhoAmI() {
     </section>
   )
 }
-EOF

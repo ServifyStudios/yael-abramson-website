@@ -17,6 +17,9 @@ export default function Footer() {
       >
         © {new Date().getFullYear()} {t.footer.name}. {t.footer.allRights}
       </p>
+      <p className="text-xs font-sans mt-1" style={{ color: 'rgba(155, 79, 216, 0.3)' }}>
+        ✓ GitHub connection test
+      </p>
     </footer>
   )
 }

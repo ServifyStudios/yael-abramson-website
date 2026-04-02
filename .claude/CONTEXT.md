@@ -6,19 +6,22 @@
 - Full website for Yael Abramson (mental health coach & speaker)
 - Sections: Hero, Story, Conversations (YouTube playlist), Who Am I, Contact, Footer
 - English / Hebrew language toggle with RTL support
-  - Language state lives in `context/LanguageContext.tsx`
-  - All strings live in `lib/translations.ts`
-  - Toggle button is in `Navbar.tsx`
-  - Heebo font loaded for Hebrew text
+  - All strings in `lib/translations.ts` (both `en` and `he` objects)
+  - Language state in `context/LanguageContext.tsx` — updates `html[dir]` and `html[lang]` on toggle
+  - Toggle button in `Navbar.tsx` (desktop: EN/עב, mobile: English/עברית)
+  - Heebo font loaded for Hebrew text (Playfair Display doesn't support Hebrew)
+  - `Conversations.tsx` stays async server component; text extracted to `ConversationsContent.tsx` (client) to access language context
 
-## Current Focus
-[empty for now]
+## What Works
+- Language toggle switches all on-page text between English and Hebrew instantly
+- RTL layout applies automatically when Hebrew is selected
+- YouTube playlist fetches and renders correctly in both languages
+- All components use `useLanguage()` from context — no hardcoded strings
 
-## Key Technical Decisions
-- Next.js App Router with TypeScript + Tailwind CSS
-- `Conversations.tsx` is an async server component (fetches YouTube RSS); text rendering extracted to `ConversationsContent.tsx` (client component) so it can use language context
-- Language switching is client-side only (no URL-based routing); `dir` and `lang` attributes on `<html>` are updated via `useEffect`
-- Heebo font used for all Hebrew text (both body and headings, since Playfair Display doesn't support Hebrew)
+## What Should Be Done Next
+- Deploy to Vercel (CLI needs `vercel login`, or connect repo via Vercel dashboard for auto-deploys)
+- Verify Hebrew RTL layout looks correct on mobile
+- Review Hebrew translations with a native speaker if needed
 
-## Next Steps
-- IMPORTANT: Any future text changes must be updated in BOTH `en` and `he` objects inside `lib/translations.ts`
+## Key Rule
+**Any future text change must be updated in BOTH `en` and `he` inside `lib/translations.ts`.**

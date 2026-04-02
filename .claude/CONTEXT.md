@@ -18,6 +18,19 @@
 - YouTube playlist fetches and renders correctly in both languages
 - All components use `useLanguage()` from context — no hardcoded strings
 
+## Session 3 — WhoAmI photo frame size (2026-04-02)
+
+### What We Did
+- Increased `maxWidth` of the photo/circles container in `components/WhoAmI.tsx` from `460px` to `478px` (+18px) so it visually aligns with the title and text column width
+
+### What Works
+- Photo frame and all decorative circles scale up proportionally (all sizing is percentage-based)
+
+### What Should Be Done Next
+- Deploy to Vercel to verify the alignment looks correct across breakpoints
+
+---
+
 ## Session 2 — GitHub Desktop Connection (2026-04-02)
 
 ### What We Did

@@ -1,4 +1,10 @@
+'use client'
+
+import { useLanguage } from '@/context/LanguageContext'
+
 export default function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section
       id="hero"
@@ -33,7 +39,7 @@ export default function Hero() {
           className="text-xs tracking-[0.5em] uppercase font-sans mb-10"
           style={{ color: '#9B4FD8' }}
         >
-          Mental Health Coach &amp; Speaker
+          {t.hero.label}
         </p>
 
         <h1
@@ -44,9 +50,9 @@ export default function Hero() {
             letterSpacing: '-0.025em',
           }}
         >
-          Healing
+          {t.hero.headingLine1}
           <br />
-          is real.
+          {t.hero.headingLine2}
         </h1>
 
         <p
@@ -56,16 +62,14 @@ export default function Hero() {
             fontSize: 'clamp(1.1rem, 2.5vw, 1.375rem)',
           }}
         >
-          And it doesn't have to hurt the way
-          <br className="hidden md:block" />
-          people think it does.
+          {t.hero.subtext}
         </p>
 
         <a
           href="#contact"
           className="inline-block bg-white text-brand-800 hover:bg-brand-200 px-10 py-4 rounded-full text-xs font-sans font-semibold tracking-[0.22em] uppercase transition-colors duration-300 mb-24"
         >
-          Reach out
+          {t.hero.cta}
         </a>
       </div>
     </section>

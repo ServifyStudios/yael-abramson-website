@@ -11,4 +11,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Hebrew / RTL font overrides */
+  html[dir='rtl'] body,
+  html[dir='rtl'] .font-sans {
+    font-family: var(--font-heebo), sans-serif;
+  }
+
+  html[dir='rtl'] .font-serif {
+    font-family: var(--font-heebo), sans-serif;
+  }
 }

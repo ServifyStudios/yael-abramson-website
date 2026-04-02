@@ -1,6 +1,11 @@
+'use client'
+
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function WhoAmI() {
+  const { t } = useLanguage()
+
   return (
     <section id="who-am-i" className="py-28 md:py-40 px-6" style={{ background: '#F8F4FF' }}>
       <div className="max-w-6xl mx-auto">
@@ -25,7 +30,7 @@ export default function WhoAmI() {
               >
                 <Image
                   src="/yael.jpg"
-                  alt="Yael Abramson"
+                  alt={t.whoAmI.imageAlt}
                   fill
                   className="object-cover object-top"
                   priority
@@ -54,7 +59,7 @@ export default function WhoAmI() {
             <p
               className="text-xs tracking-[0.45em] uppercase font-sans mb-6"
               style={{ color: '#9B4FD8' }}
-            >Who Am I</p>
+            >{t.whoAmI.label}</p>
             <h2
               className="font-serif mb-8"
               style={{
@@ -63,11 +68,11 @@ export default function WhoAmI() {
                 letterSpacing: '-0.015em',
                 color: '#1E0A35',
               }}
-            >Yael Abramson</h2>
+            >{t.whoAmI.heading}</h2>
             <div className="space-y-5 font-sans text-lg leading-[1.85]" style={{ color: '#3a3a4a' }}>
-              <p>Yael Abramson is a personal guide. She has a private practice, guiding people to a full experience of life. Yael&rsquo;s intention is to change the current narrative and perspective on mental illness and physical health, and to reduce suffering in the world.</p>
-              <p>Yael has recovered from bipolar disorder after having 5 psychotic episodes in 10 years. She suffered from suicidal ideation for 15 years, and tried to take her life at the age of 26.</p>
-              <p>In her journey, Yael came across an approach that opened her mind, and allowed her to feel freer, and to experience peace of mind.</p>
+              {t.whoAmI.body.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
             </div>
           </div>
 

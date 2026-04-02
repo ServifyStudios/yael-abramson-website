@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 export interface Video {
   videoId: string
@@ -9,6 +10,7 @@ export interface Video {
 
 export default function ConversationsPlayer({ videos }: { videos: Video[] }) {
   const [activeId, setActiveId] = useState(videos[0]?.videoId || '')
+  const { t } = useLanguage()
 
   if (videos.length === 0) {
     // Fallback if RSS fetch fails
@@ -59,7 +61,7 @@ export default function ConversationsPlayer({ videos }: { videos: Video[] }) {
           style={{ borderColor: 'rgba(180, 112, 240, 0.2)' }}
         >
           <p className="text-xs tracking-[0.25em] uppercase font-sans font-medium" style={{ color: '#7B2FBE' }}>
-            All Conversations
+            {t.conversations.allConversations}
           </p>
         </div>
 

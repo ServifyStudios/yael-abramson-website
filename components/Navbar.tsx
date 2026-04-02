@@ -1,17 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-
-const navLinks = [
-  { label: 'Story', href: '#story' },
-  { label: 'Conversations', href: '#conversations' },
-  { label: 'Who Am I', href: '#who-am-i' },
-  { label: 'Reach Out', href: '#contact' },
-]
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { lang, setLang, t } = useLanguage()
+
+  const navLinks = [
+    { label: t.nav.story, href: '#story' },
+    { label: t.nav.conversations, href: '#conversations' },
+    { label: t.nav.whoAmI, href: '#who-am-i' },
+    { label: t.nav.reachOut, href: '#contact' },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -36,20 +38,29 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
         <a href="#" className="font-serif text-lg text-white tracking-wide">
-          Yael Abramson
+          {t.nav.brand}
         </a>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map(({ label, href }) => (
             <a
-              key={label}
+              key={href}
               href={href}
               className="text-brand-300 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-sans"
             >
               {label}
             </a>
           ))}
+
+          {/* Language toggle */}
+          <button
+            onClick={() => setLang(lang === 'en' ? 'he' : 'en')}
+            className="text-brand-300 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] font-sans border border-brand-700 hover:border-brand-400 px-3 py-1 rounded-full"
+            aria-label="Toggle language"
+          >
+            {lang === 'en' ? 'עב' : 'EN'}
+          </button>
         </nav>
 
         {/* Mobile toggle */}
@@ -76,12 +87,12 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className="md:hidden overflow-hidden transition-all duration-300"
-        style={{ maxHeight: menuOpen ? '300px' : '0px' }}
+        style={{ maxHeight: menuOpen ? '340px' : '0px' }}
       >
         <nav className="px-6 pb-8 flex flex-col gap-5">
           {navLinks.map(({ label, href }) => (
             <a
-              key={label}
+              key={href}
               href={href}
               className="text-brand-300 hover:text-white text-sm tracking-[0.2em] uppercase font-sans transition-colors"
               onClick={() => setMenuOpen(false)}
@@ -89,6 +100,14 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+
+          {/* Language toggle — mobile */}
+          <button
+            onClick={() => { setLang(lang === 'en' ? 'he' : 'en'); setMenuOpen(false) }}
+            className="self-start text-brand-300 hover:text-white text-sm tracking-[0.2em] font-sans transition-colors border border-brand-700 hover:border-brand-400 px-3 py-1 rounded-full"
+          >
+            {lang === 'en' ? 'עברית' : 'English'}
+          </button>
         </nav>
       </div>
     </header>

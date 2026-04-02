@@ -1,6 +1,10 @@
 'use client'
 
+import { useLanguage } from '@/context/LanguageContext'
+
 export default function Contact() {
+  const { t } = useLanguage()
+
   return (
     <section
       id="contact"
@@ -22,7 +26,7 @@ export default function Contact() {
           className="text-xs tracking-[0.45em] uppercase font-sans mb-8"
           style={{ color: '#9B4FD8' }}
         >
-          Connect
+          {t.contact.label}
         </p>
 
         <h2
@@ -33,21 +37,18 @@ export default function Contact() {
             letterSpacing: '-0.02em',
           }}
         >
-          If something in these words felt familiar...
+          {t.contact.heading}
         </h2>
 
         <div
           className="space-y-5 font-sans text-lg leading-[1.85] mb-14"
           style={{ color: 'rgba(203, 150, 247, 0.8)' }}
         >
-          <p>
-            If you recognized yourself somewhere in this story, I'd love to hear from you.
-          </p>
-          <p>
-            I've been in that place where it felt like there was no one, and I found a way through. Maybe we can find yours together.
-          </p>
+          {t.contact.body.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
           <p className="text-white font-medium">
-            Reach out. I'm here.
+            {t.contact.emphasis}
           </p>
         </div>
 

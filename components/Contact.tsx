@@ -54,7 +54,7 @@ export default function Contact() {
 
         <a
           href="mailto:YaelAbramson83@gmail.com"
-          className="font-sans text-lg transition-colors duration-200"
+          className="font-sans text-lg font-bold transition-colors duration-200"
           style={{ color: 'rgba(203, 150, 247, 0.9)' }}
           onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
           onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(203, 150, 247, 0.9)')}

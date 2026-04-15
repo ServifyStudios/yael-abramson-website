@@ -14,7 +14,7 @@ export default function WhoAmI() {
           <div className="order-2 md:order-1 flex items-center justify-center">
             <div
               className="relative mx-auto"
-              style={{ width: '100%', maxWidth: '460px', aspectRatio: '1 / 1' }}
+              style={{ width: '100%', maxWidth: '478px', aspectRatio: '1 / 1' }}
             >
               <div
                 className="absolute inset-0 rounded-full"
